@@ -80,7 +80,7 @@ var confiGenerales = {
         confiGenerales.resultadoBusqueda();
         confiGenerales.replaceHref();
         // setInterval(confiGenerales.traducciones, 800);
-        confiGenerales.mainLazyLoad();
+        // confiGenerales.mainLazyLoad();
         confiGenerales.promoPopUp();
 
         $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
@@ -1149,7 +1149,7 @@ var confiGenerales = {
         if ($montoValor == 0) {
 
             // console.log("miniCart vacío");
-            confiGenerales.mainLazyLoad();
+            // confiGenerales.mainLazyLoad();
 
             $emptyBag.addClass("active");
             $cartNumber.removeClass("active");
@@ -1158,7 +1158,7 @@ var confiGenerales = {
         }
         if ($montoValor > 0) {
 
-            confiGenerales.mainLazyLoad();
+            // confiGenerales.mainLazyLoad();
 
             // console.log("miniCart tiene productos");
 
@@ -1257,7 +1257,7 @@ var confiGenerales = {
                 $(this).on("mouseenter", function () {
                     var $menuItemAttr = $(this).attr("class");
 
-                    confiGenerales.mainLazyLoad();
+                    // confiGenerales.mainLazyLoad();
                     confiGenerales.menuItems($(this), exit, ".main-overlay");
 
                     $megamenu.each(function () {
@@ -1650,7 +1650,7 @@ var home = {
             });
 
             $('.home-slide, .carousel-populares,.carousel-novedades, .carousel-agregadoExito').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-                confiGenerales.mainLazyLoad();
+                // confiGenerales.mainLazyLoad();
                 // console.log(nextSlide);
             });
 
@@ -1739,7 +1739,7 @@ var producto = {
             producto.anchorDescripcion();
             producto.tallasColores();
             producto.formatoPrecioFichaProductoReplace(".skuBestPrice");
-            confiGenerales.mainLazyLoad();
+            // confiGenerales.mainLazyLoad();
             setInterval(producto.traducciones, 500);
             console.log("controles de producto");
         }
@@ -2126,7 +2126,7 @@ var producto = {
         });
 
         $('.carousel-interesar, .carousel-agregadoExito').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-            confiGenerales.mainLazyLoad();
+            // confiGenerales.mainLazyLoad();
             // console.log(nextSlide);
         });
 
@@ -2520,14 +2520,14 @@ var categDepto = {
             categDepto.infinityScroll();
             categDepto.toggleClassMochila();
             //setInterval(categDepto.traducciones,800);
-            setInterval(confiGenerales.mainLazyLoad, 800);
+            // setInterval(confiGenerales.mainLazyLoad, 800);
             categDepto.traducciones();
             categDepto.filtroSticky();
             categDepto.mobilePageChange();
             // categDepto.fullWidthCateg();
 
             $('.carousel-interesar, .carousel-agregadoExito').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-                confiGenerales.mainLazyLoad();
+                // confiGenerales.mainLazyLoad();
                 // console.log(nextSlide);
             });
             console.log("controles de categDepto");
@@ -2814,7 +2814,7 @@ var categDepto = {
                     confiGenerales.replaceHref();
                     confiGenerales.wishlistOnclick();
                     confiGenerales.compraAsyncVitrina();
-                    confiGenerales.mainLazyLoad();
+                    // confiGenerales.mainLazyLoad();
                 },
                 // Cálculo do tamanho do footer para que uma nova página seja chamada antes do usuário chegar ao "final" do site
                 getShelfHeight: function ($this) {

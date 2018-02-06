@@ -1,6 +1,6 @@
 # Changelog
 
-Todos los cambios hechos en éste proyecto estarán correctamente documentados en este archivo de cambios.
+Todos los cambios hechos en el proyecto serán documentados en este archivo de cambios.
 
 ## [Unreleased](https://github.com/jesuspoleo18/samsoniteAR/commits/master)
 

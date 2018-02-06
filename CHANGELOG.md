@@ -2,9 +2,9 @@
 
 Todos los cambios hechos en éste proyecto estarán correctamente documentados en este archivo de cambios.
 
-## [Unreleased]
+## [Unreleased](https://github.com/jesuspoleo18/samsoniteAR/commits/master)
 
-## [1.0.0] - 2018-02-06
+## [1.0.0](https://github.com/jesuspoleo18/samsoniteAR/releases/tag/v1.0.0) - 2018-02-06
 
 ### Added
 * N/A

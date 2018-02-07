@@ -4,7 +4,7 @@
 
 Projecto:  SamsoniteAR - 2017
 Version: 0.1
-Ultimo cambio:  06/02/18
+Ultimo cambio:  07/02/18
 Asignado a:  jesus poleo.
 Primary use:  ecommerce. 
 
@@ -917,6 +917,7 @@ main {
 
 .top-bar__center{
     /*     border:1px solid white; */
+    width:40%;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -1924,6 +1925,9 @@ header .middle-container__content-popCart .cartCheckout:after {
 
 .vtexsc-wrap {
     width: inherit !important;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 
@@ -2297,7 +2301,8 @@ header .middle-container__content-popCart .cartCheckout:after {
 
 /* .megamenu-bolsos, */
 /* .megamenu-maletines, */
-/* .megamenu-equipaje, */
+.megamenu-equipaje,
+[title="equipaje-samsonite"],
 .megamenu-ofertas,
 .megamenu-mujer,
 /* .megamenu-accesorios, */
@@ -2309,7 +2314,7 @@ header .middle-container__content-popCart .cartCheckout:after {
 .orders .megamenu-ocasion
 /* .orders .megamenu-accesorios, */
 {
-    display: none;
+    display: none !important;
 }
 
 .megamenu-sale,
@@ -3667,6 +3672,7 @@ footer hr {
 
 .prateleira ul li {
     max-width: 32%;
+    margin-bottom:2rem;
 }
 
 .prateleira.n1colunas ul li {
@@ -3675,6 +3681,11 @@ footer hr {
 
 .categoria .prateleira li {
     margin: initial;
+}
+
+.prateleira .carousel-agregadoExito li .producto-prateleira h3,
+.prateleira .carousel-agregadoExito li .producto-prateleira__info{
+    display:none;
 }
 /* 
 .categoria .prateleira ul:last-child,
@@ -3730,10 +3741,6 @@ footer hr {
 
 .prateleira ul {
     margin: 0;
-}
-
-.prateleira ul li{
-    margin-bottom:2rem;
 }
 
 .prateleira .carousel-interesar:nth-child(1) {
@@ -4159,6 +4166,29 @@ footer hr {
     width: 100%;
 }
 
+.cuotas__container{
+    background-color:white;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.cuotas__content{
+    border:1px dotted #777;
+    padding:.5rem;
+    margin-bottom:1rem;
+}
+
+.cuotas__text{
+    font-size:.8rem;
+}
+
+#cuotas{
+    font-weight:bold;
+    color:#0E9F75;
+}
+
 .wrapper-buy-button-asynchronous .btn-add-buy-button-asynchronous {
     color: transparent;
     height: 100%;
@@ -4286,7 +4316,8 @@ footer hr {
 .producto-prateleira__info--precio-container .producto-prateleira__info--buy-btn,
 .producto-prateleira__imagen .producto-prateleira__info--wishlist,
 .producto-prateleira__imagen .producto-prateleira__imagen--quickView,
-.producto-prateleira__info .producto-prateleira__info--outStock {
+.producto-prateleira__info .producto-prateleira__info--outStock,
+.cuotas__container {
     /*   border:1px solid red; */
     opacity: 0;
     -webkit-transition: opacity .3s 0s, visibility 0s .3s;
@@ -4383,7 +4414,8 @@ footer hr {
 .prateleira li:hover .producto-prateleira__info--precio-container .producto-prateleira__info--buy-btn,
 .prateleira li:hover .producto-prateleira__imagen .producto-prateleira__info--wishlist,
 .prateleira li:hover .producto-prateleira__imagen .producto-prateleira__imagen--quickView,
-.prateleira li:hover .producto-prateleira__info .producto-prateleira__info--outStock {
+.prateleira li:hover .producto-prateleira__info .producto-prateleira__info--outStock,
+.prateleira li:hover .cuotas__container {
     /* border:1px solid red; */
     opacity: 1;
 }
@@ -8383,7 +8415,7 @@ ul.even {
 .recentProduct-contentFree p {
     color: #7F8C8D;
     font-size: .7rem;
-    /*     text-transform:uppercase; */
+    text-align:center;
 }
 
 #agregadoExito .recentProduct-content {
@@ -8424,12 +8456,24 @@ ul.even {
     margin-left: 1rem;
 }
 
+.popCart-mensaje__container{
+    margin-bottom:1rem;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
 .envioGratis {
-    /*     border-bottom:1px solid #eee; */
+    border:1px dotted #777;
     font-size: .8rem;
     padding: .6rem;
     text-align: center;
-    width: 80%;
+    width: 100%;
+}
+
+#agregadoExito .envioGratis{
+    width:60%;
 }
 
 .envioGratis strong {
@@ -8521,6 +8565,10 @@ ul.even {
     position: absolute;
 }
 
+/* .agregadoExito-productos{
+    border:1px solid red;
+} */
+
 
 /* 
   [c10.Mediaquerie modal, reveal, etc. ]
@@ -8568,7 +8616,8 @@ ul.even {
 @media screen and (min-width: 64em) {
     #agregadoExito{
         padding:3rem;
-        padding-top:1rem;   
+        padding-top:1rem; 
+        padding-bottom:1rem;  
     }
 }
 
@@ -8795,12 +8844,17 @@ ul.even {
     }
 }
 
+/* large */
+@media screen and (min-width: 64em) {
+    #agregadoExito {
+        top: 8% !important;
+    }
+}
 
 /* xlarge */
-
 @media only screen and (min-width:90.063em) {
     #agregadoExito {
-        top: 20% !important;
+        top: 15% !important;
     }
     #agregadoExito .agregadoExito-mensaje .fa {
         display: none;
@@ -11622,8 +11676,8 @@ text-transform:lowercase;
 }
 
 .resultado-busca-result .result {
-    background-color: #003a7c;
-    color: white;
+    
+    color: #003a7c;
     font-weight: bold;
     text-transform: uppercase;
     margin: 0 .4rem;
@@ -11674,6 +11728,7 @@ text-transform:lowercase;
     }
     .resultado-busca-result {
         padding: .4rem .5rem;
+        width:100%;
     }
 }
 
@@ -11681,6 +11736,9 @@ text-transform:lowercase;
 /* medium */
 
 @media only screen and (min-width:40.063em) and (max-width:64em) {
+    .resultado-busca.no-encontro-filtros .categoria-container__content{
+        width:90%;
+    }
     .resultado-busca .resultado-content {
         margin-bottom: 1rem;
     }

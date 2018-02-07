@@ -82,12 +82,71 @@ var confiGenerales = {
         // setInterval(confiGenerales.traducciones, 800);
         // confiGenerales.mainLazyLoad();
         confiGenerales.promoPopUp();
+        confiGenerales.calculoTemplate();
 
         $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
             // console.log("actualizó");
             confiGenerales.checkEmptyCart();
         });
+        $(".middle-container__content-cart").on("hover", function(){
+            confiGenerales.calculoEnvioGratis(1000,'$1000');
+        });
         console.log("controles generales");
+
+    },
+
+    calculoTemplate: function(){
+        var $middleContainerCart = $('.middle-container__content-popCart'),
+            templatePopCart = '<div class="popCart-mensaje__container"></div>';
+
+        $($middleContainerCart).prepend(templatePopCart);
+    },
+
+    calculoEnvioGratis: function (valor, valorMsg) {
+
+        vtexjs.checkout.getOrderForm().done(function (orderForm) {
+
+            var checkProperty = orderForm.totalizers,
+                $popCartMessage = $(".popCart-mensaje__container");
+
+            if (checkProperty.length > 0) {
+
+                var val = orderForm.value,
+                    formatVal = parseFloat(val) / 100,
+                    valPositive = Math.abs(formatVal),
+                    substract = valor - valPositive,
+                    substractPositive = Math.abs(substract),
+                    convertString = substractPositive.toString(),
+                    substractTotal = convertString + ",00";
+                    // substractTotal = convertString.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+                //console.log("substractTotal:" + " " + substractTotal);
+
+                if (valPositive > valor || valPositive == valor) {
+
+                    var $despachoGratis = '<div class="recentProductFree-container"><div class="recentProduct-contentFree"><h4>¡Felicitaciones, tu envío es gratis!</h4><p>Envío gratis por compras mayor o igual a ' + valorMsg +'</p></div></div>';
+
+                    //console.log("se consultó el miniCart y es mayor o igual a 1000$");
+                    $popCartMessage.html("");
+                    $popCartMessage.append($despachoGratis);
+
+                } else if (valPositive < valor) {
+
+                    var $despachoFalta = '<div class="envioGratis"> <p>Agrega otro producto por:<span id="envioGratisMiniCart">' + substractTotal + '</span>y obtén <strong>envío gratis.</strong></p></div>';
+
+                    //console.log('se consultó el miniCart y es menor a ' + valorMsg +' mil');
+                    $popCartMessage.html("");
+                    $popCartMessage.append($despachoFalta);
+
+                }
+
+            } else if (checkProperty.length == 0) {
+
+                $popCartMessage.html("");
+
+            }
+
+        });
 
     },
 
@@ -700,6 +759,41 @@ var confiGenerales = {
 
                 vtexjs.checkout.addToCart([item], null, 1).done(function (orderForm) {
 
+                    vtexjs.checkout.getOrderForm().done(function(orderForm) {
+
+                        var val = orderForm.value,
+                            formatVal = parseFloat(val)/100,
+                            valPositive = Math.abs(formatVal),
+                            substract = 1000 - valPositive,
+                            substractPositive = Math.abs(substract),
+                            convertString = substractPositive.toString(),
+                            // substractTotal = convertString.replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+                            substractTotal = convertString + ",00",
+                            // substractTotal = convertString.replace(/(\d{2})(?=(\d\d\d)+(?!\d))/g, "1."),
+                            // substractTotal= convertString.replace(/(\d)(?=(\d{3})+(?!\d))/g,"1."),
+                            $recentProduct = '<div class="recentProduct-container"> <div class="recentProduct-content"></div> <div class="envioGratis"> <p>Agrega otro producto por:<span id="envioGratis">'+substractTotal+'</span>y obtén<strong> envío gratis.</strong></p></div></div>',
+                            $recentProductFree = '<div class="recentProductFree-container"><div class="recentProduct-contentFree"><h4>¡Felicitaciones, tu envío es gratis!</h4><p>Envío gratis por compras mayor o igual a $1000</p></div></div>';
+
+                        if(valPositive > 1000 || valPositive == 1000){
+                            console.log("es mayor");
+                            if ($(".recentProductFree-container").length == 0){
+                                $(".recentProduct-container").remove();
+                                $("#agregadoExitoTitle").after($recentProductFree);
+                            }
+
+                        }else if(valPositive < 1000){
+                            console.log("es menor");
+                            if ($(".recentProduct-container").length == 0) {
+                                $(".recentProductFree-container").remove();
+                                $("#agregadoExitoTitle").after($recentProduct);
+                            }
+                        }
+
+                        // $('#agregadoExito').foundation('open');
+                        // console.log(orderForm);
+
+                    });
+
                     $('#agregadoExito').foundation('reveal', 'open');
                     console.log(orderForm);
 
@@ -1013,7 +1107,7 @@ var confiGenerales = {
                                 confirmButtonColor: '#003a7c',
                                 cancelButtonColor: '#bbb',
                                 cancelButtonText: 'cancelar',
-                                confirmButtonText: 'login',
+                                confirmButtonText: 'Login',
                                 showCancelButton: true,
                                 onOpen: function (swal) {
                                     $(swal).find('.swal2-confirm').off().click(function (e) {
@@ -1404,50 +1498,29 @@ var confiGenerales = {
 
     cuotas: function () {
 
-        var $producto = $("body.producto"),
-            $categDeptoBusca = $(".categoria, .departamento, .busca");
+        var $productBlock = $(".prateleira li");
 
-        if ($producto.length) {
+        $productBlock.each(function() {
+            var $promoBestPrice = $(this).find(".producto-prateleira__info--bestPrice.promo-price"),
+                $bestPrice = $(this).find(".producto-prateleira__info--bestPrice"),
+                $infoPrecio = $(this).find(".producto-prateleira__info--buy-btn"),
+                $templateCuotas = '<div class="cuotas__container"><div class="cuotas__content"><p class="cuotas__text">3 cuotas de <span id="cuotas"></span> sin interés.</p></div></div>',
+                priceCuota = function (el) {
+                    var $a = (parseFloat(el.text().trim().replace("$", "")) / 3).toFixed(0);
+                    return $a;
+                };
 
-            var $text = $(".price-best-price"),
-                $priceAhora = $(".basica-precio .valor-por.price-best-price:contains('Ahora:')");
-            // number = (parseFloat(text.replace("$",""))/6).toFixed(3);
-
-            $priceAhora.each(function () {
-                $(this).html($(this).html().split("Ahora:").join(""));
+            $(this).on("mouseenter", function(){
+                if($(this).find(".cuotas__text").length == 0){
+                    $infoPrecio.before($templateCuotas);
+                    if ($promoBestPrice.length) {
+                        $(this).find("#cuotas").text(priceCuota($promoBestPrice));
+                    } else if ($bestPrice.length) {
+                        $(this).find("#cuotas").text(priceCuota($bestPrice));
+                    }
+                } 
             });
-
-            $text.each(function () {
-
-                var $texto = $(this).text(),
-                    number = (parseFloat($texto.replace("$", "")) / 6).toFixed(3);
-
-                $(".basica-precio .cuotas").html('$' + number);
-            });
-
-            $(".carousel-interesar .producto-prateleira__info--precio").each(function () {
-
-                var $controlBestPrice = $(this).find(".bestPrice:visible"),
-                    $controlCuotas = $(this).find(".cuotas"),
-                    priceCuota = (parseFloat($controlBestPrice.text().trim().replace("$", "")) / 6).toFixed(3);
-
-                $controlCuotas.text("$" + priceCuota);
-            });
-
-        }
-
-        if ($categDeptoBusca.length) {
-
-            $(".producto-prateleira__info--precio").each(function () {
-
-                var $controlBestPrice = $(this).find(".producto-prateleira__info--bestPrice.promo-price div:visible"),
-                    $controlCuotas = $(this).find(".cuotas"),
-                    priceCuota = (parseFloat($controlBestPrice.text().trim().replace("$", "")) / 6).toFixed(3);
-
-                $controlCuotas.text("$" + priceCuota);
-            });
-
-        }
+        });
 
     },
 
@@ -2172,6 +2245,37 @@ var producto = {
 
             vtexjs.checkout.addToCart([item], null, 1).done(function (orderForm) {
 
+                vtexjs.checkout.getOrderForm().done(function (orderForm) {
+
+                    var val = orderForm.value,
+                        formatVal = parseFloat(val) / 100,
+                        valPositive = Math.abs(formatVal),
+                        substract = 1000 - valPositive,
+                        substractPositive = Math.abs(substract),
+                        convertString = substractPositive.toString(),
+                        // substractTotal = convertString.replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+                        substractTotal = convertString + ",00",
+                        // substractTotal = convertString.replace(/(\d{2})(?=(\d\d\d)+(?!\d))/g, "1."),
+                        // substractTotal= convertString.replace(/(\d)(?=(\d{3})+(?!\d))/g,"1."),
+                        $recentProduct = '<div class="recentProduct-container"> <div class="recentProduct-content"></div> <div class="envioGratis"> <p>Agrega otro producto por:<span id="envioGratis">' + substractTotal + '</span>y obtén<strong> envío gratis.</strong></p></div></div>',
+                        $recentProductFree = '<div class="recentProductFree-container"><div class="recentProduct-contentFree"><h4>¡Felicitaciones, tu envío es gratis!</h4><p>Envío gratis por compras mayor o igual a $1000</p></div></div>';
+
+                    if (valPositive > 1000 || valPositive == 1000) {
+                        console.log("es mayor");
+                        if ($(".recentProductFree-container").length == 0) {
+                            $(".recentProduct-container").remove();
+                            $("#agregadoExitoTitle").after($recentProductFree);
+                        }
+
+                    } else if (valPositive < 1000) {
+                        console.log("es menor");
+                        if ($(".recentProduct-container").length == 0) {
+                            $(".recentProductFree-container").remove();
+                            $("#agregadoExitoTitle").after($recentProduct);
+                        }
+                    }
+
+                });
                 $('#agregadoExito').foundation('reveal', 'open');
                 console.log(orderForm);
 

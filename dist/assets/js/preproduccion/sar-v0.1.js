@@ -4,7 +4,7 @@
 
 Projecto:  SamsoniteAR  - 2018
 Version:  0.1
-Ultimo cambio: 05/02/18.
+Ultimo cambio: 08/02/18.
 Asignado a:  jesus poleo.
 Primary use:  Ecommerce. 
 
@@ -1107,7 +1107,7 @@ var confiGenerales = {
                                 confirmButtonColor: '#003a7c',
                                 cancelButtonColor: '#bbb',
                                 cancelButtonText: 'cancelar',
-                                confirmButtonText: 'Login',
+                                confirmButtonText: 'login',
                                 showCancelButton: true,
                                 onOpen: function (swal) {
                                     $(swal).find('.swal2-confirm').off().click(function (e) {
@@ -1496,31 +1496,98 @@ var confiGenerales = {
 
     },
 
-    cuotas: function () {
+    cuotas: function(){
+        
+        var $productBlock = $(".prateleira li"),
+            $producto = $(".produto"),
+            fichaProducto = {id:""},
+            $responsive = $(window).width();
 
-        var $productBlock = $(".prateleira li");
+        if($responsive > 768){
+            
+            $productBlock.each(function () {
 
-        $productBlock.each(function() {
-            var $promoBestPrice = $(this).find(".producto-prateleira__info--bestPrice.promo-price"),
-                $bestPrice = $(this).find(".producto-prateleira__info--bestPrice"),
-                $infoPrecio = $(this).find(".producto-prateleira__info--buy-btn"),
-                $templateCuotas = '<div class="cuotas__container"><div class="cuotas__content"><p class="cuotas__text">3 cuotas de <span id="cuotas"></span> sin interés.</p></div></div>',
-                priceCuota = function (el) {
-                    var $a = (parseFloat(el.text().trim().replace("$", "")) / 3).toFixed(0);
-                    return $a;
-                };
+                $(this).on("mouseenter", function () {
 
-            $(this).on("mouseenter", function(){
-                if($(this).find(".cuotas__text").length == 0){
-                    $infoPrecio.before($templateCuotas);
-                    if ($promoBestPrice.length) {
-                        $(this).find("#cuotas").text(priceCuota($promoBestPrice));
-                    } else if ($bestPrice.length) {
-                        $(this).find("#cuotas").text(priceCuota($bestPrice));
+                    if ($(this).find(".cuotas__text").length == 0) {
+
+                        var $prodId = $(this).find(".wrapper-buy-button-asynchronous .btn-add-buy-button-asynchronous").attr("id"),
+                            productId = $prodId.split("idprod")[1],
+                            $infoPrecio = $(this).find(".producto-prateleira__info--buy-btn"),
+                            $templateCuotas = '<div class="cuotas__container"><div class="cuotas__content"><p class="cuotas__text">3 cuotas de <span id="cuotas"></span> aprox. Sin interés.</p></div></div>';
+
+                        $infoPrecio.before($templateCuotas);
+
+                        var $idCuotas = $(this).find("#cuotas");
+
+                        $.ajax({
+                            url: 'https://samsonitear.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?fq=productId:' + productId + '',
+                            dataType: 'json',
+                            type: 'GET',
+                            crossDomain: true,
+                            success: function (data) {
+                                console.log(data);
+                                // console.log(data[0].items[0].sellers[0].commertialOffer.Price);
+                                // priceCuota = function (el) { var $a = (parseFloat(el.text().trim().replace("$", "")) / 3).toFixed(0); return $a; },
+                                var priceCuota = function (el) {
+                                    var result = parseFloat(el / 3).toFixed(0);
+                                    return result;
+                                };
+                                productPrice = data[0].items[0].sellers[0].commertialOffer.Price;
+
+                                $idCuotas.text(priceCuota(productPrice) + ",00");
+                                // $idCuotas.text(priceCuota(productPrice));
+                                // if ($promoBestPrice.length) {
+                                //     $(this).find("#cuotas").text(priceCuota(productPrice));
+                                // } else if ($bestPrice.length) {
+                                //     $(this).find("#cuotas").text(priceCuota($bestPrice));
+                                // }
+                            }
+                        });
                     }
-                } 
+                });
             });
-        });
+        }
+
+        if($producto.length){
+            var $templateCuotas = '<div class="cuotas__container"><div class="cuotas__content"><p class="cuotas__text">3 cuotas de <span id="cuotas"></span> aprox. Sin interés.</p></div></div>',
+                $basicaPrecio = $(".basica-precio");
+
+            $basicaPrecio.after($templateCuotas);
+
+            var $idCuotas = $(".cuotas__container").find("#cuotas");
+
+            vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
+
+                fichaProducto.id = product.productId;
+
+            });
+
+            $.ajax({
+                url: 'https://samsonitear.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?fq=productId:' + fichaProducto.id + '',
+                dataType: 'json',
+                type: 'GET',
+                crossDomain: true,
+                success: function (data) {
+                    console.log(data);
+                    // console.log(data[0].items[0].sellers[0].commertialOffer.Price);
+                    // priceCuota = function (el) { var $a = (parseFloat(el.text().trim().replace("$", "")) / 3).toFixed(0); return $a; },
+                    var priceCuota = function (el) {
+                        var result = parseFloat(el / 3).toFixed(0);
+                        return result;
+                    };
+                    productPrice = data[0].items[0].sellers[0].commertialOffer.Price;
+
+                    $idCuotas.text(priceCuota(productPrice) + ",00");
+                    // $idCuotas.text(priceCuota(productPrice));
+                    // if ($promoBestPrice.length) {
+                    //     $(this).find("#cuotas").text(priceCuota(productPrice));
+                    // } else if ($bestPrice.length) {
+                    //     $(this).find("#cuotas").text(priceCuota($bestPrice));
+                    // }
+                }
+            });
+        }
 
     },
 
@@ -2244,8 +2311,8 @@ var producto = {
                 };
 
             vtexjs.checkout.addToCart([item], null, 1).done(function (orderForm) {
-
-                vtexjs.checkout.getOrderForm().done(function (orderForm) {
+              
+				vtexjs.checkout.getOrderForm().done(function (orderForm) {
 
                     var val = orderForm.value,
                         formatVal = parseFloat(val) / 100,
@@ -2276,6 +2343,7 @@ var producto = {
                     }
 
                 });
+              
                 $('#agregadoExito').foundation('reveal', 'open');
                 console.log(orderForm);
 
@@ -2918,6 +2986,7 @@ var categDepto = {
                     confiGenerales.replaceHref();
                     confiGenerales.wishlistOnclick();
                     confiGenerales.compraAsyncVitrina();
+                    confiGenerales.cuotas();
                     // confiGenerales.mainLazyLoad();
                 },
                 // Cálculo do tamanho do footer para que uma nova página seja chamada antes do usuário chegar ao "final" do site

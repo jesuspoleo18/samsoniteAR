@@ -4,7 +4,7 @@
 
 Projecto:  SamsoniteAR - 2017
 Version: 0.1
-Ultimo cambio:  07/02/18
+Ultimo cambio:  08/02/18
 Asignado a:  jesus poleo.
 Primary use:  ecommerce. 
 
@@ -2301,8 +2301,11 @@ header .middle-container__content-popCart .cartCheckout:after {
 
 /* .megamenu-bolsos, */
 /* .megamenu-maletines, */
-.megamenu-equipaje,
-[title="equipaje-samsonite"],
+/* .megamenu-equipaje, */
+/* [title="equipaje-samsonite"], */
+[title="Ofertas"],
+[title="maletas-samsonite"],
+[title="mujer-samsonite"],
 .megamenu-ofertas,
 .megamenu-mujer,
 /* .megamenu-accesorios, */
@@ -10742,6 +10745,10 @@ text-transform:lowercase;
     width: 350px;
 }
 
+.produto .cuotas__container{
+    opacity:1;
+    justify-content:flex-start;
+}
 
 /* 
 [d4.Mediaquerie produto ]
@@ -10957,6 +10964,7 @@ text-transform:lowercase;
         max-height: 80px;
     }
     .basica-precio {
+        text-align:center;
         padding-bottom: .5rem;
         -webkit-box-flex: initial;
         -webkit-flex: initial;
@@ -11093,6 +11101,12 @@ text-transform:lowercase;
     }
     .no-disponible {
         text-align: center;
+    }
+    .producto-container__informacion--basica-content{
+        justify-content:center;
+    }
+    .produto .cuotas__container{
+        justify-content:center;
     }
 }
 
@@ -11547,6 +11561,10 @@ text-transform:lowercase;
     }
     .departamento main{
         padding:0;
+    }
+    .searchResultContainer{
+        max-width:initial;
+        max-width:100%;
     }
 }
 

@@ -2303,8 +2303,7 @@ header .middle-container__content-popCart .cartCheckout:after {
 /* .megamenu-maletines, */
 /* .megamenu-equipaje, */
 /* [title="equipaje-samsonite"], */
-[title="Ofertas"],
-[title="maletas-samsonite"],
+[title="ofetas-samsonite"],
 [title="mujer-samsonite"],
 .megamenu-ofertas,
 .megamenu-mujer,
@@ -8583,8 +8582,8 @@ ul.even {
 @media only screen and (max-width:40em) {
     #agregadoExito {
         min-height:initial !important;
-        top: 10% !important;
-        padding-top: .5rem;
+        top: 3% !important;
+        padding: .5rem;
     }
     #cambioDevoluciones,
     #politicaDespacho {
@@ -8795,6 +8794,7 @@ ul.even {
         font-size: .8rem;
         text-align: center;
         margin-left: 0;
+        padding-bottom:0;
         width: 100%;
     }
     #agregadoExito .agregadoExito-mensaje h2:before {
@@ -8816,8 +8816,11 @@ ul.even {
         margin: 0;
         margin-bottom: .5rem;
     }
-    .envioGratis {
+    #agregadoExito .envioGratis {
         line-height: 26px;
+        padding:0;
+        margin-top:.6rem;
+        width:100%;
     }
 }
 

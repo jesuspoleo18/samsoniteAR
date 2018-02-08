@@ -21,4 +21,4 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 * Se formateo el archivo README.md y se creó el archivo CHANGELOG.md **18:55pm | 2018-02-06**
 * Se ajustó el mensaje promocional del topbar para resoluciones de >= 1536 **12:22am | 2018-02-07**
 * Activado el menu y megamenu de equipaje **9:44am | 2018-02-08**
-
+* El css para los menues off-canvas se editaron por errores de attr, se hicieron ajustes en los mediaqueries para el modal de agregado con éxito **10:40am | 2018-02-08**

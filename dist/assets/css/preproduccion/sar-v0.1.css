@@ -4,7 +4,7 @@
 
 Projecto:  SamsoniteAR - 2017
 Version: 0.1
-Ultimo cambio:  08/02/18
+Ultimo cambio:  09/02/18
 Asignado a:  jesus poleo.
 Primary use:  ecommerce. 
 
@@ -3207,7 +3207,7 @@ footer hr {
     -moz-appearance: none;
     appearance: none;
     width: 20px;
-    position: relative
+    position: relative;
 }
 
 .footer-newsletter__content--formulario [type=checkbox]:checked.visto-femenino:before {
@@ -5334,7 +5334,7 @@ content:'Selecciona una lista';
 }
 
 .glis-edit-link:after{
-    content:"Haz click acá para administrar tu lista";
+    content:"Haz click acÃ¡ para administrar tu lista";
     background-color: #003a7c;
     left:0;
     padding:1rem;
@@ -12583,7 +12583,7 @@ h5.span5:before {
 
 .orders .vtex-bootstrap h1 span:before {
     /*     border:1px solid red; */
-    content: "ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡Usted todavia no tiene pedidos!";
+    content: "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡Usted todavia no tiene pedidos!";
     visibility: visible;
     text-align: center;
     position: absolute;
@@ -13144,6 +13144,132 @@ h5.span5:before {
     line-height: 25px;
 }
 
+.vc__intro-container{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.vc__intro-select{
+    /*     border:1px solid blue; */
+    width:80%;
+}
+
+.vc__title-container{
+    /*     border:1px solid orange; */
+    display:flex;
+    justify-content:flex-start;
+    flex-direction:column;
+}
+
+.vc__title{
+    font-size:2rem;
+    margin-bottom:.5rem;
+}
+
+.vc__title.sub{
+    font-size:1rem;
+    display:block;
+}
+
+.vc__introPass{
+    justify-content:space-between;
+    align-items:center;
+}
+
+.vc__volver{
+    color:#003a7c;
+  	display:none;
+    font-size:.8rem;
+}
+
+.vc__volver:before{
+    content: "\f177";
+    font-family:'FontAwesome';
+    padding-right:.5rem;
+}
+
+.vc__introPass{
+    display:none;
+}
+
+.vc__introPass .vc__title{
+    margin-bottom:2rem;
+}
+
+.vc__checkbox-container{
+    /*     border:1px solid red; */
+    margin-top:1rem;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+}
+
+.vc__checkbox-container input[type="checkbox"]+label, input[type="radio"]+label{
+    margin:0;
+    margin-right:.5rem
+}
+
+.vc__checkbox-container [type=checkbox]{
+    border: 1px solid #7F8C8D;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-bottom: 0;
+    height: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    position: relative;
+}
+
+.vc__checkbox-container [type=checkbox]:checked{
+    background-color:#003a7c;
+}
+
+#natural{
+    margin-right:2rem;
+}
+
+.vc__checkbox-container label{
+    font-weight:bold;
+    margin-right:.5rem
+}
+
+.vc__persona,
+.vc__empresa{
+    /*     border:1px solid red; */
+    display:flex;
+    flex-flow:wrap;
+    justify-content:space-between;
+    align-items:center;
+}
+.vc__input{
+    width:49%;
+}
+.vc__input.asunto,
+.vc__input.consulta{
+    width:100%;
+}
+.vc__label{
+    color:#003a7c;
+    font-size:.8rem;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:.5rem;
+}
+.vc__persona,
+.vc__empresa{
+    display:none;
+}
+
+#empresa__submit,
+#persona__submit{
+    width:30%;
+}
+
 
 /* 
 [d18.Mediaquerie estaticos ]
@@ -13151,7 +13277,7 @@ h5.span5:before {
 
 @media only screen and (max-width:40em) {
     .estatico-container{
-        margin-top:0;
+        margin-top:1rem;
     }
     .estatico-content {
         -webkit-box-orient: vertical;
@@ -13224,10 +13350,36 @@ h5.span5:before {
     #storeContent {
         width: 90%;
     }
+    .vc__title{
+        font-size:1.5rem;
+    }
+    #empresa__submit, #persona__submit{
+        width:100%;
+    }
 }
 
-@media only screen and (min-width:40.063em) and (max-width:64em) {}
+/* medium */
+@media only screen and (min-width:40.063em) and (max-width:64em) {
+    .estatico-content .estatico-content__menu-lateral a{
+        font-size:.7rem;
+        line-height:28px;
+    }
+    .estatico-content{
+        width:100%;
+    }
+    .estatico-content .estatico-content__menu-lateral{
+        width:30%;
+    }
+    .vc__intro-select,
+    .vc__title.sub{
+        width:100%;
+    }
+    .vc__persona{
+        width:95%;
+    }
+}
 
+/* xlarge */
 @media only screen and (min-width:90.063em) {
     .estatico-content {
         width: 70%;

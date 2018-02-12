@@ -4,7 +4,7 @@
 
 Projecto:  SamsoniteAR  - 2018
 Version:  0.1
-Ultimo cambio: 08/02/18.
+Ultimo cambio: 09/02/18.
 Asignado a:  jesus poleo.
 Primary use:  Ecommerce. 
 
@@ -219,7 +219,19 @@ var confiGenerales = {
 
         var $btnContacto = $('#contacto-submit'),
             $btnPrimerCompra = $("#primeraCompra_submit"),
+            $vpSubmit = $("#persona__submit"),
+            $vpEmpresa = $("#empresa__submit"),
             $btnNewsletter = $('#newsletter_submit');
+
+        $vpEmpresa.on("click", function (e) {
+            e.preventDefault();
+            confiGenerales.vcFormEmpresa();
+        });
+
+        $vpSubmit.on("click", function (e) {
+            e.preventDefault();
+            confiGenerales.vcFormPersona();
+        });
 
         $btnPrimerCompra.on("click", function (e) {
             e.preventDefault();
@@ -244,17 +256,16 @@ var confiGenerales = {
 
     },
 
-    contacto: function () {
-
+    vcFormPersona: function(){
+        
         var datos = {};
 
-        datos.sc_nombre = $('#sc_nombre').val();
-        datos.sc_apellido = $('#sc_apellido').val();
-        datos.sc_email = $("#sc_email").val();
-        datos.sc_telefono = $("#sc_telefono").val();
-        datos.sc_ciudad = $("#sc_ciudad").val();
-        datos.sc_asunto = $("#sc_asunto").val();
-        datos.sc_mensaje = $("#sc_mensaje").val();
+        datos.vp__nombre = $("#vp__nombre").val();
+        datos.vp__apellido = $("#vp__apellido").val();
+        datos.vp__email = $("#vp__email").val();
+        datos.vp__fono = $("#vp__fono").val();
+        datos.vp__asunto = $("#vp__asunto").val();
+        datos.vp__consulta = $("#vp__consulta").val();
 
         $.ajax({
 
@@ -263,21 +274,116 @@ var confiGenerales = {
             crossDomain: true,
             data: JSON.stringify(datos),
             type: 'POST',
-            url: '//api.vtexcrm.com.br/samsonitear/dataentities/SC/documents',
+            url: '//api.vtexcrm.com.br/samsonitear/dataentities/VP/documents',
 
             success: function (data) {
 
-                $('#NewsAprob').foundation('reveal', 'open');
+                var files = ["https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.1/sweetalert2.all.min.js"];
+
+                $.when.apply($, $.map(files, function (file) {
+                    return $.getScript(files);
+                })).then(function () {
+                    swal({
+                        title: 'Sus datos han sido enviado con éxito, pronto nos comunicaremos con usted.',
+                        type: 'success',
+                        // showCancelButton: true,
+                        confirmButtonColor: '#003a7c',
+                        // cancelButtonColor: '#bbb',
+                        // cancelButtonText: 'OK',
+                        confirmButtonText: 'OK'
+                    });
+                }, function err(jqxhr, textStatus, errorThrown) {
+                    console.log(textStatus);
+                });
                 confiGenerales.clearData();
 
             },
             error: function (data) {
 
-                $('#NewsError').foundation('reveal', 'open');
+                var files = ["https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.1/sweetalert2.all.min.js"];
+
+                $.when.apply($, $.map(files, function (file) {
+                    return $.getScript(files);
+                })).then(function () {
+                    swal({
+                        title: 'Llene todos los campos del formulario o revise que el correo esté bien escrito.',
+                        type: 'error',
+                        // showCancelButton: true,
+                        confirmButtonColor: '#E4002B',
+                        // cancelButtonColor: '#bbb',
+                        // cancelButtonText: 'OK',
+                        confirmButtonText: 'OK'
+                    });
+                }, function err(jqxhr, textStatus, errorThrown) {
+                    console.log(textStatus);
+                });
             }
         });
+    },    
+    vcFormEmpresa: function () {
+        var datos = {};
 
-    },
+        datos.ve__razonSocial = $("#ve__razonSocial").val();
+        datos.ve__cuit = $("#ve__cuit").val();
+        datos.ve__email = $("#ve__email").val();
+        datos.ve__nombreContacto = $("#ve__nombreContacto").val();
+        datos.ve__fono = $("#ve__fono").val();
+        datos.ve__asunto = $("#ve__asunto").val();
+        datos.ve__consulta = $("#ve__consulta").val();
+
+        $.ajax({
+
+            accept: 'application/vnd.vtex.ds.v10+json',
+            contentType: 'application/json; charset=utf-8',
+            crossDomain: true,
+            data: JSON.stringify(datos),
+            type: 'POST',
+            url: '//api.vtexcrm.com.br/samsonitear/dataentities/VE/documents',
+
+            success: function (data) {
+
+                var files = ["https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.1/sweetalert2.all.min.js"];
+
+                $.when.apply($, $.map(files, function (file) {
+                    return $.getScript(files);
+                })).then(function () {
+                    swal({
+                        title: 'Sus datos han sido enviado con éxito, pronto nos comunicaremos con usted.',
+                        type: 'success',
+                        // showCancelButton: true,
+                        confirmButtonColor: '#003a7c',
+                        // cancelButtonColor: '#bbb',
+                        // cancelButtonText: 'OK',
+                        confirmButtonText: 'OK'
+                    });
+                }, function err(jqxhr, textStatus, errorThrown) {
+                    console.log(textStatus);
+                });
+                confiGenerales.clearData();
+
+            },
+            error: function (data) {
+
+                var files = ["https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.1/sweetalert2.all.min.js"];
+
+                $.when.apply($, $.map(files, function (file) {
+                    return $.getScript(files);
+                })).then(function () {
+                    swal({
+                        title: 'Llene todos los campos del formulario o revise que el correo esté bien escrito.',
+                        type: 'error',
+                        // showCancelButton: true,
+                        confirmButtonColor: '#E4002B',
+                        // cancelButtonColor: '#bbb',
+                        // cancelButtonText: 'OK',
+                        confirmButtonText: 'OK'
+                    });
+                }, function err(jqxhr, textStatus, errorThrown) {
+                    console.log(textStatus);
+                });
+            }
+        });
+    },    
 
     newsletter: function () {
 
@@ -525,6 +631,7 @@ var confiGenerales = {
             $content = $(".footer-newsletter__content"),
             $input = $("input:checkbox"),
             $nombre = $("#sn_name"),
+            $vcInputs = $("#vp__nombre,#vp__apellido,#vp__email,#vp__fono,#vp__asunto,#vp__consulta,#ve__razonSocial,#ve__cuit,#ve__email,#ve__nombreContacto,#ve__fono,#ve__asunto,#ve__consulta"),
             $email = $("#sn_email");
 
         $content.find($input).removeAttr('checked');
@@ -533,6 +640,7 @@ var confiGenerales = {
 
         if ($accepted.length) {
             $(".estatico-content__contenido input[type='text'],.estatico-content__contenido input[type='email']").val('');
+            $vcInputs.val("");
         }
 
     },
@@ -541,26 +649,28 @@ var confiGenerales = {
         var $a = $(".main-overlay"),
             $home = $(".home");
 
-        CoverPop.start({
-            coverId: 'CoverPop-cover',
-            cookieName: '_CoverPop',
-            closeOnEscape: true,
-            delay: 1000,
-            expires: 1,
-            onPopUpOpen: function () {
-                $a.addClass("display");
-                $home.addClass("coverPopDisplay");
-                $a.on("click", function () {
-                    CoverPop.close();
-                });
-            },
-            onPopUpClose: function () {
-                $a.removeClass("display");
-                $home.removeClass("coverPopDisplay");
-            }
+        if($home.length){
+            CoverPop.start({
+                coverId: 'CoverPop-cover',
+                cookieName: '_CoverPop',
+                closeOnEscape: true,
+                delay: 1000,
+                expires: 1,
+                onPopUpOpen: function () {
+                    $a.addClass("display");
+                    $home.addClass("coverPopDisplay");
+                    $a.on("click", function () {
+                        CoverPop.close();
+                    });
+                },
+                onPopUpClose: function () {
+                    $a.removeClass("display");
+                    $home.removeClass("coverPopDisplay");
+                }
 
-        });
-        CoverPop.start();
+            });
+            CoverPop.start();
+        }
     },
 
     mainLazyLoad: function () {
@@ -1107,7 +1217,7 @@ var confiGenerales = {
                                 confirmButtonColor: '#003a7c',
                                 cancelButtonColor: '#bbb',
                                 cancelButtonText: 'cancelar',
-                                confirmButtonText: 'login',
+                                confirmButtonText: 'Login',
                                 showCancelButton: true,
                                 onOpen: function (swal) {
                                     $(swal).find('.swal2-confirm').off().click(function (e) {
@@ -1388,7 +1498,7 @@ var confiGenerales = {
 
         var $responsive = $(window).width();
 
-        if ($responsive < 767) {
+        if ($responsive < 425) {
 
             console.log("accordion");
 
@@ -3022,11 +3132,11 @@ var estatico = {
         var $estatico = $(".estatico");
         if($estatico.length){
             estatico.asideEstaticoSticky(".estatico-content__menu-lateral nav");
-            console.log("controles de las páginas estaticas cargados =P ");
+            estatico.vcForm();
+            console.log("control estaticas cargado =P ");
         }
     },
     asideEstaticoSticky: function (trigger){
-
 
         var files = ["/arquivos/hc-sticky.min.js"];
 
@@ -3045,6 +3155,30 @@ var estatico = {
         });
 
 
+    },
+    vcForm: function(){
+        var $inputs = $(".vc__checkbox-container input"),
+            $vcPersona = $(".vc__persona,.vc__introPass"),
+            $vcPersonaVisible = $(".vc__persona:visible,.vc__introPass"),
+            $vcEmpresa = $(".vc__empresa,.vc__introPass"),
+            $vcEmpresaVisible = $(".vc__empresa:visible,.vc__introPass"),
+            $vcBack = $(".vc__volver"),
+            $intro = $(".vc__intro-select"),
+            $effectOut = function (el) { return el.fadeOut(500);}, 
+            $effectIn = function (el) { return el.fadeIn(500).css("display", "flex"); };
+        
+        $inputs.on("click",function(){
+            var $this = $(this);
+            if($this.attr('name') == 'natural'){
+                $.when($effectOut($intro)).done(function () {
+                    $effectIn($vcPersona);
+                });
+            }else if($this.attr('name') == 'juridica'){
+                $.when($effectOut($intro)).done(function () {
+                    $effectIn($vcEmpresa);
+                });
+            }
+        });
     }
 };
 

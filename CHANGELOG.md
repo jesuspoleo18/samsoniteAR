@@ -18,7 +18,11 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 * Adición de página Ventas corporativas con sus menues laterales mobile, desktop y formularios con opción para escoger entre persona natural y juridica, estilado a la versión de escritorio **17:30am | 2018-02-08**
 * Ajuste de script para envío a MD, Estilado de versión medium y mobile para ventas corporativas **13:53pm | 2018-02-09**
 * Cambio de tamaño para window.width en el script principal para la funcion de accordion **13:53pm | 2018-02-09**
+<<<<<<< HEAD
 
+=======
+* Las dependencias sar.css y sar.js fueron minificadas y pasadas a producción **13:19am | 2018-02-12**
+>>>>>>> master
 
 ### Changed
 * Se ocultó el menú de navegación "equipaje" en desktop y mobile mientras se llena la bodega **17:30pm | 2018-02-06**

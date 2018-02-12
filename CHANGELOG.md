@@ -15,6 +15,7 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 * Se está desarrollando el cálculo de cuotas por productos, ya fue estilado para la versión de escritorio **16:46pm | 2018-02-07**
 * Se agregó al módulo de cálculo de cuotas la sección para la ficha de producto y se estiló para la versión de escritorio y mobile **10:06am | 2018-02-08**
 * El menu off-canvas mobile fue editado para navegar correctamente por el sitio, así como también se ocultaron a través de los attr mediante el css los menues que no están activos, línea 2302 css **10:25am | 2018-02-08**
+* Las dependencias sar.css y sar.js fueron minificadas y pasadas a producción **13:19am | 2018-02-12**
 
 ### Changed
 * Se ocultó el menú de navegación "equipaje" en desktop y mobile mientras se llena la bodega **17:30pm | 2018-02-06**

@@ -15,14 +15,10 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 * Se está desarrollando el cálculo de cuotas por productos, ya fue estilado para la versión de escritorio **16:46pm | 2018-02-07**
 * Se agregó al módulo de cálculo de cuotas la sección para la ficha de producto y se estiló para la versión de escritorio y mobile **10:06am | 2018-02-08**
 * El menu off-canvas mobile fue editado para navegar correctamente por el sitio, así como también se ocultaron a través de los attr mediante el css los menues que no están activos, línea 2302 css **10:25am | 2018-02-08**
-<<<<<<< HEAD
 * Adición de página Ventas corporativas con sus menues laterales mobile, desktop y formularios con opción para escoger entre persona natural y juridica, estilado a la versión de escritorio **17:30am | 2018-02-08**
 * Ajuste de script para envío a MD, Estilado de versión medium y mobile para ventas corporativas **13:53pm | 2018-02-09**
 * Cambio de tamaño para window.width en el script principal para la funcion de accordion **13:53pm | 2018-02-09**
-
-=======
 * Las dependencias sar.css y sar.js fueron minificadas y pasadas a producción **13:19am | 2018-02-12**
->>>>>>> develop
 
 ### Changed
 * Se ocultó el menú de navegación "equipaje" en desktop y mobile mientras se llena la bodega **17:30pm | 2018-02-06**

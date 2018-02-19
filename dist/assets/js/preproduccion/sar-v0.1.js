@@ -4,7 +4,7 @@
 
 Projecto:  SamsoniteAR  - 2018
 Version:  0.1
-Ultimo cambio: 09/02/18.
+Ultimo cambio: 19/02/18.
 Asignado a:  jesus poleo.
 Primary use:  Ecommerce. 
 
@@ -18,7 +18,7 @@ Primary use:  Ecommerce.
 4.Controles de producto.
 5.Controles de depto y categ.
 7.Controles de cuenta.
-7.Controles de wishlist.
+8.Controles de wishlist.
 
 
 ** Recomendaciones para navegacion de tabla de contenido **
@@ -320,9 +320,12 @@ var confiGenerales = {
             }
         });
     },    
+
     vcFormEmpresa: function () {
+
         var datos = {};
 
+        datos.ve__empresa = $("#ve__empresa").val();
         datos.ve__razonSocial = $("#ve__razonSocial").val();
         datos.ve__cuit = $("#ve__cuit").val();
         datos.ve__email = $("#ve__email").val();

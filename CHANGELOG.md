@@ -4,6 +4,17 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 
 ## [Unreleased](https://github.com/jesuspoleo18/samsoniteAR/commits/master)
 
+## [1.0.1](https://github.com/jesuspoleo18/samsoniteAR/releases/tag/v1.0.1) - 2018-02-19
+
+### Added
+--
+
+### Changed
+* Bajo solicitud, se cambió el formulario de venta corporativa jurídico para que tuviera un campo más (empresa) **15:17pm | 2018-02-19**
+
+### Fixed
+* No se estaban gatillando los triggers para las entidades de datos "venta corporativa empresa" y "venta corporativa persona", fue corregido. **15:17pm | 2018-02-19**
+
 ## [1.0.0](https://github.com/jesuspoleo18/samsoniteAR/releases/tag/v1.0.0) - 2018-02-06
 
 ### Added

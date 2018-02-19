@@ -7,7 +7,7 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 ## [1.0.1](https://github.com/jesuspoleo18/samsoniteAR/releases/tag/v1.0.1) - 2018-02-19
 
 ### Added
---
+* Después de las pruebas en producción del sitio, se hizo el paso a producción del css y el js (minificado) **16:29pm | 2018-02-19**
 
 ### Changed
 * Bajo solicitud, se cambió el formulario de venta corporativa jurídico para que tuviera un campo más (empresa) **15:17pm | 2018-02-19**

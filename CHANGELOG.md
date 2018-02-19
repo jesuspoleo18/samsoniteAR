@@ -11,6 +11,9 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 
 ### Changed
 * Bajo solicitud, se cambió el formulario de venta corporativa jurídico para que tuviera un campo más (empresa) **15:17pm | 2018-02-19**
+* Se cambio la palabra "natural" por "física" **15:34pm | 2018-02-19**
+* La palabra "apellidos" se cambió por "apellido" **15:34pm | 2018-02-19**
+* El placeholder del campo "asunto" se leía "sunto", fue corregido. **15:34pm | 2018-02-19**
 
 ### Fixed
 * No se estaban gatillando los triggers para las entidades de datos "venta corporativa empresa" y "venta corporativa persona", fue corregido. **15:17pm | 2018-02-19**

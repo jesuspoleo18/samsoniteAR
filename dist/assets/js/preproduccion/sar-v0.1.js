@@ -1106,44 +1106,43 @@ var confiGenerales = {
         var files = ["https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.1/sweetalert2.all.min.js"];
 
         $.when.apply($, $.map(files, function (file) {
-                return $.getScript(files);
-            }))
-            .then(function () {
-                // swal({
-                //     title: 'Producto Agregado',
-                //     type: 'success',
-                //     showCancelButton: true,
-                //     confirmButtonColor: '#003a7c',
-                //     cancelButtonColor: '#bbb',
-                //     cancelButtonText: 'Seguir Comprando',
-                //     confirmButtonText: 'Pagar'
-                // }).then(function () {
-                //     $(".swal2-confirm").on("click", function(){
-                //         window.location.href = '/checkout/';
-                //         return false;
-                //     });
-                //     $(".swal2-cancel").on("click", function () {
-                //         window.location.href = '/checkout/';
-                //     });
-                // });
-                swal({
-                    title: 'Producto Agregado',
-                    type: 'success',
-                    confirmButtonColor: '#003a7c',
-                    cancelButtonColor: '#bbb',
-                    cancelButtonText: 'Seguir Comprando',
-                    confirmButtonText: 'Pagar',
-                    showCancelButton: true,
-                    onOpen: function (swal) {
-                        $(swal).find('.swal2-confirm').off().click(function (e) {
-                            // window.open('/checkout/');
-                            window.location.href = '/checkout/';
-                        });
-                    }
-                });
-            }, function err(jqxhr, textStatus, errorThrown) {
-                console.log(textStatus);
+            return $.getScript(files);
+        })).then(function () {
+            // swal({
+            //     title: 'Producto Agregado',
+            //     type: 'success',
+            //     showCancelButton: true,
+            //     confirmButtonColor: '#003a7c',
+            //     cancelButtonColor: '#bbb',
+            //     cancelButtonText: 'Seguir Comprando',
+            //     confirmButtonText: 'Pagar'
+            // }).then(function () {
+            //     $(".swal2-confirm").on("click", function(){
+            //         window.location.href = '/checkout/';
+            //         return false;
+            //     });
+            //     $(".swal2-cancel").on("click", function () {
+            //         window.location.href = '/checkout/';
+            //     });
+            // });
+            swal({
+                title: 'Producto Agregado',
+                type: 'success',
+                confirmButtonColor: '#003a7c',
+                cancelButtonColor: '#bbb',
+                cancelButtonText: 'Seguir Comprando',
+                confirmButtonText: 'Pagar',
+                showCancelButton: true,
+                onOpen: function (swal) {
+                    $(swal).find('.swal2-confirm').off().click(function (e) {
+                        // window.open('/checkout/');
+                        window.location.href = '/checkout/';
+                    });
+                }
             });
+        }, function err(jqxhr, textStatus, errorThrown) {
+            console.log(textStatus);
+        });
 
     },
 

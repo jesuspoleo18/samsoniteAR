@@ -640,11 +640,87 @@ function getAllData() {
                             fax: "",
                             email: "altopalermo@travelcba.com"
 
+                        },
+
+                        "GALERIAS PACIFICO": {
+
+                            lat: -34.598947,
+                            lng: -58.3764177,
+                            personal: "",
+                            address: "San Martin 768 - Loc. 222, CABA",
+                            phone: "4313-3569",
+                            fax: "",
+                            email: "galerias@travelcba.com"
+
+                        },
+                        "UNICENTER SHOPPING": {
+
+                            lat: -34.5086274,
+                            lng: -58.5254016,
+                            personal: "",
+                            address: "Parana 3745 - Loc. 2325, Martinez, Buenos Aires",
+                            phone: "4512-2277",
+                            fax: "",
+                            email: "unicenter@travelcba.com"
+
                         }
 
                     }
 
                 },
+
+                CORDOBA: {
+
+                    lat: "-32.2214458",
+                    lng: "-66.0218059",
+
+                    stores: {
+
+                        "SAMSONITE CORDOBA": {
+
+                            lat: -31.420807,
+                            lng: -64.1895967,
+                            personal: "",
+                            address: "Obispo Trejo 419 - Ciudad de Cordoba, Cordoba",
+                            phone: "(0351) 429-0977",
+                            fax: "",
+                            email: "trejobagcba@gmail.com"
+
+                        }
+                    }
+                },
+
+                ROSARIO: {
+
+                    lat: "-32.9521399",
+                    lng: "-60.7681982",
+
+                    stores:{
+
+                        "ALTO ROSARIO SHOPPING": {
+
+                            lat: -32.9271298,
+                            lng: -60.6734207,
+                            personal: "",
+                            address: "Junin 501 - Gondolas 19 y 20, Rosario, Santa Fe",
+                            phone: "(0341) 410-6514",
+                            fax: "",
+                            email: "samsonitealtorosario@gmail.com"
+
+                        },
+                        "SAMSONITE ROSARIO": {
+
+                            lat: -32.9647707,
+                            lng: -60.7578582,
+                            personal: "",
+                            address: "Corrientes 871 - Loc. C, Rosario, Santa Fe",
+                            phone: "(0341) 447-3071",
+                            fax: "",
+                            email: "cecchini.corner@gmail.com"
+
+                        }
+                    }
+                }
 
 
             } // /.fin ciudades

@@ -8,6 +8,9 @@ Todos los cambios hechos en el proyecto serán documentados en este archivo de c
 
 ### Added
 * Después de las pruebas en producción del sitio, se hizo el paso a producción del css y el js (minificado) **16:29pm | 2018-02-19**
+* Se añadió un placeholder global "custom elements" para los premios **12:20pm | 2018-02-22**
+* A partir de la línea 267 del archivo "sar-mantención" se agregó el css para reorganizar el footer mientras que hayan premios para la versión escritorio, en versiónes menores, sólo se oculta. Cuando no hayan premios que mostrar, hay que comentar desde la línea 269 hasta la 298 **12:23pm | 2018-02-22**
+* Agregada la imágen de los premios "sar-premio-trip.jpg" **12:23pm | 2018-02-22**
 
 ### Changed
 * Bajo solicitud, se cambió el formulario de venta corporativa jurídico para que tuviera un campo más (empresa) **15:17pm | 2018-02-19**

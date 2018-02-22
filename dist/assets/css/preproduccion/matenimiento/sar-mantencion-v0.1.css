@@ -4,7 +4,7 @@
 
 Projecto:  SamsoniteAR - 2017
 Version: 0.1
-Ultimo cambio: 06/01/18 11:38pm | J
+Ultimo cambio: 22/02/18 10:41pm | J
 Asignado a:  mantenimiento.
 Primary use:  ecommerce. 
 
@@ -266,11 +266,73 @@ header .middle-container__content-popCart .cartSkuActions .cartSkuRemove a:befor
 
 */
 
+footer {
+    position: relative;
+}
+
+.footer-container {
+    justify-content: space-between;
+}
+
+.toggle-trigger {
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: .5rem
+}
+
+.footer-container__left,
+.footer-container__right,
+.footer-container__center {
+    max-width: 33%;
+    min-width: 33%;
+    width: 33%;
+}
+
+.footer-container__center {
+    max-width: 20%;
+    min-width: 20%;
+    padding: 0 1rem;
+    text-align: center;
+    width: 20%;
+}
+
 /*
 
 	[a8.Mediaquerie footer]
 
 */
+
+@media only screen and (max-width: 40em) {
+	.footer-container__center{
+		display:none;
+	}
+	.footer-container__left{
+		max-width: 90%;
+		min-width: 90%;
+		-webkit-box-ordinal-group: 2;
+		-webkit-order: 1;
+		-ms-flex-order: 1;
+		order: 1;
+		width: 90%;
+	}
+	.footer-container__right {
+		min-width: initial;
+		max-width: initial;
+		width: 100%;
+	}
+}
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+	.footer-container__center{
+		display:none;
+	}
+	.footer-container__left, .footer-container__right {
+		max-width: 50%;
+		min-width: 50%;
+		width: 50%;
+	}
+}
+@media only screen and (min-width: 90.063em) { }
 
 /*
 
@@ -592,7 +654,7 @@ ul.pages li {
 
 img,
 .reveal-modal img {
-    visibility: hidden;
+    visibility: visible;
 }
 
 .quickview-container__informacion--basica-content .logo-marca img {
@@ -663,6 +725,10 @@ img,
     color: white;
     padding: .5rem;
     visibility: visible;
+}
+
+#loadMore__btn{
+	display:none;
 }
 
 /*
@@ -1179,8 +1245,3 @@ img,
 	[d22.Mediaquerie brand]
 
 */
-
-
-#loadMore__btn{
-	display:none;
-}

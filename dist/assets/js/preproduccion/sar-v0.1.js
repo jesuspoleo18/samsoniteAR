@@ -758,7 +758,7 @@ var confiGenerales = {
 
     resultadoBusqueda: function () {
 
-        var $accept = $("body.resultado-busca, body.brand");
+        var $accept = $("body.resultado-busca, body.brand, body.categoria");
 
         if ($accept.length) {
 
@@ -768,7 +768,7 @@ var confiGenerales = {
                 urlText = url.split("/")[1],
                 $resultText = $(".resultado-busca-result .result"),
                 $filter = $(".Hide.HideMarca"),
-                $body = $("body.resultado-busca,body.brand"),
+                $body = $("body.resultado-busca,body.brand, body.categoria"),
                 $hideSideBar = $(".content__aside");
 
             if ($filter.length == 0) {

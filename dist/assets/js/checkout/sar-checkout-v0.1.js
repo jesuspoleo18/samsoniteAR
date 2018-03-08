@@ -19,7 +19,6 @@ var carrito = {
 		carrito.profileMasterdata();
 		carrito.cupon();
 	},
-
 	formatoDecimales: function(seletor){
                 
         $(seletor).each(function() {
@@ -39,7 +38,6 @@ var carrito = {
         });
 
     },
-
     elementosFormato: function(){
 
         var $ajaxStopElems = '.total-selling-price, .monetary, .new-product-price, .sla-value, .sight, .description .price.pull-right, .shipping-option-item-value, .delivery-windows .radio span, .old-product-price.muted';
@@ -52,7 +50,6 @@ var carrito = {
         });
 
     },
-
 	campoSexo: function(){
 
 		var $sexForm = "<div class='sexForm__container'><div class='newsletter__femenino'> <input id='sp_femenino' type='checkbox' name='sp_femenino' value='femenino'> <label for='femenino'>Feminino</label> </div> <div class='newsletter__masculino'> <input id='sp_masculino' type='checkbox' name='sp_masculino' value='masculino'> <label for='masculino'>Masculino</label> </div></div>",
@@ -64,7 +61,6 @@ var carrito = {
 		$target.after($sexForm);
 
 	},
-
 	profileMasterdata: function(){
 
 		var $fem = $('#sp_femenino'),
@@ -142,14 +138,12 @@ var carrito = {
 		}
 
 	},
-
 	cupon: function(){
 
 		var $trigger = $(".link-coupon-add");
 
 		$trigger.click();
 	}
-
-}
+};
 
 /*=====  End of checkout js  ======*/
